@@ -1,0 +1,3 @@
+https://socket.io/docs/
+https://tutorialedge.net/typescript/angular/angular-socket-io-tutorial/
+https://codingblast.com/chat-application-angular-socket-io/
