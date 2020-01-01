@@ -9,11 +9,16 @@ import { ChatService } from './Chat.service';
 export class AppComponent {
   title = 'rxjs-chat';
   message: string;
+  Username:string;
   messages: string[] = [];
   constructor(private chatService: ChatService) { }
   
   sendMessage() {
     this.chatService.sendMessage(this.message);
+    this.message = '';
+  }
+  registeruserName() {
+    this.chatService.online(this.Username);
     this.message = '';
   }
 

@@ -8,16 +8,20 @@ export class ChatService {
 
     constructor() {
         this.socket = io(this.url);
+        console.log("sockcet"+this.socket.ids);
+    
     }
 
-    public sendMessage(message) {
-       
-        this.socket.emit('hello', message);
+    public sendMessage(message) {       
+        this.socket.emit('message', message);
+    }
+    public online(message) {       
+        this.socket.emit('join', message);
     }
 
     public getMessages = () => {
         return Observable.create((observer) => {
-            this.socket.on('hello', (message) => {
+            this.socket.on('message', (message) => {
                 console.log(message);
                 observer.next(message);
             },error =>{

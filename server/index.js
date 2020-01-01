@@ -13,14 +13,21 @@ io.on('connect', onConnect);
 
 function onConnect(socket){
 
-console.log('connected');
+console.log('connected'+socket.id);
 
+ socket.on('join', function(username) {
+        socket.username = username;
+        console.log(username);
+		socket.join(username);
+    });
 
-	socket.on('hello', (message) => {
-		console.log(message);
-
-io.sockets.emit('hello', message);
- socket.broadcast.emit('hello', message);
+socket.on('message', (message) => {
+	console.log(message);
+	//io.to('rajesh').emit('message', message);
+	//io.emit('message', message);
+	//io.sockets.emit('hello', message);
+    //socket.broadcast.emit('message', message);
+	 socket.broadcast.to('rajesh').emit('message', message);
 });
 
 };
